@@ -1,5 +1,5 @@
 {
-    "name": "lumina-auth-monorepo",
+    "name": "@lumina-auth/monorepo",
     "private": true,
     "scripts": {
         "build": "pnpm run clean && pnpm -r build",

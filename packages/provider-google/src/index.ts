@@ -1,4 +1,3 @@
-import "@lumina-auth/types"
 import { Provider } from "@lumina-auth/core";
 
 export interface GoogleRequest {
@@ -28,7 +27,7 @@ export interface GooogleAuthResponse {
 }
 
 declare global {
-    namespace AuthNamespace {
+    namespace LuminaAuth {
         interface ProviderProfileMap {
             google: {
                 id: string

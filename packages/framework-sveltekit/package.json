@@ -1,5 +1,5 @@
 {
-    "name": "@lumina-auth/test-app",
+    "name": "@lumina-auth/framework-sveltekit",
     "private": true,
     "main": "dist/index.js",
     "types": "dist/index.d.ts",

@@ -1,4 +1,3 @@
-import "@lumina-auth/types"
 import { Provider } from "@lumina-auth/core";
 
 export interface DiscordRequest {
@@ -14,7 +13,7 @@ export interface DiscordProfile {
 }
 
 declare global {
-    namespace AuthNamespace {
+    namespace LuminaAuth {
         interface ProviderProfileMap {
             discord: {
                 discord_username: string
