@@ -1,0 +1,13 @@
+{
+    "name": "lumina-auth-monorepo",
+    "private": true,
+    "scripts": {
+        "build": "pnpm run clean && pnpm -r build",
+        "test": "pnpm -r test",
+        "clean": "pnpm -r clean"
+    },
+    "devDependencies": {
+        "@types/node": "^22.10.5",
+        "typescript": "^5.7.2"
+    }
+}

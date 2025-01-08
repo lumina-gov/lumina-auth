@@ -1,0 +1,70 @@
+import { AuthSystem } from "."
+import { GoogleProvider } from "provider-google"
+
+// const user: AuthNamespace.Session = {
+//     name: "John Doe"
+// }
+
+
+
+
+let p: AuthNamespace.Profile
+
+// const auth = new AuthSystem({
+//     providers: [
+//         new GoogleProvider({
+//             clientId: "1234567890",
+//             clientSecret: "1234567890",
+//             to_user(profile) {
+//                 return {
+//                     name: profile.name
+//                 }
+//             }
+//         })
+//     ]
+// })
+
+
+/**
+ * - /auth/request
+ *     - return maybe a redirect, user?
+ * - /auth/callback/google -> goes back to user-provided callback with errors/tokens/etc
+ *
+ * User flow:
+ *  - Sign in with Google
+ *      - POST /auth/request with params (callback_url)
+ *      - user is redirected to oauth provider
+ *      - user is redirected back to callback
+ *      - callback is called with a token
+ *      - token is used to get user profile
+ *      - profile is used to create a user
+ *      - user is converted to a token
+ *      - user is redirected to callback
+ *  - Sign in with Facebook
+ *      - POST /auth/request with params (callback_url)
+ *      - user is redirected to oauth provider
+ *      - user is redirected back to callback
+ *      - callback is called with a token
+ *      - token is used to get user profile
+ *      - profile is used to create a user
+ *      - user is converted to a token
+ *      - user is redirected to callback
+ *  - Sign in with Credentials
+ *      - POST /auth/request with params (email, password, callback_url)
+ *      - credentials provider gets profile or error
+ *      - profile is used to create a user
+ *      - user is converted to a token
+ *      - user is returned a token
+ *  - Sign in with email link
+ *      - POST /auth/request with params (email, callback_url)
+ *      - email provider gets profile or error
+ *      - profile is used to create a user
+ *      - user is converted to a token
+ *      - email is sent to user
+ *      - user clicks link
+ *      - email provider gets verification code
+ *      - profile is used to create a user
+ *      - user is converted to a token
+ *
+ *   - Error handling system
+ */
