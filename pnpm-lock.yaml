@@ -81,6 +81,13 @@ importers:
       '@lumina-auth/provider-google':
         specifier: workspace:*
         version: link:../provider-google
+      safe-ssr:
+        specifier: 0.0.8
+        version: 0.0.8(@sveltejs/kit@2.15.2(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.16.6)(vite@6.0.7(@types/node@22.10.5)))(svelte@5.16.6)(vite@6.0.7(@types/node@22.10.5)))(svelte@5.16.6)
+    devDependencies:
+      '@sveltejs/kit':
+        specifier: ^2.0.0
+        version: 2.15.2(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.16.6)(vite@6.0.7(@types/node@22.10.5)))(svelte@5.16.6)(vite@6.0.7(@types/node@22.10.5))
 
   packages/provider-discord:
     dependencies:
@@ -1002,6 +1009,12 @@ packages:
   sade@1.8.1:
     resolution: {integrity: sha512-xal3CZX1Xlo/k4ApwCFrHVACi9fBqJ7V+mwhBsuf/1IOKbBy098Fex+Wa/5QMubw09pSZ/u8EY8PWgevJsXp1A==}
     engines: {node: '>=6'}
+
+  safe-ssr@0.0.8:
+    resolution: {integrity: sha512-jLyeeNfROXrIbAkwdXlMp4Q/lY+BiL88vWF/T5TIKH31BfSKP/u2+QGoE9XgAfjhR0fvBi0zmvMlMC9XUJAd2Q==}
+    peerDependencies:
+      '@sveltejs/kit': ^2.5.24
+      svelte: ^5.0.0-next.1
 
   semver@7.6.3:
     resolution: {integrity: sha512-oVekP1cKtI+CTDvHWYFUcMtsK/00wmAEfyqKfNdARm8u1wNVhSgaX7A8d4UuIlUI5e84iEwOhs7ZPYRmzU9U6A==}
@@ -1997,6 +2010,12 @@ snapshots:
   sade@1.8.1:
     dependencies:
       mri: 1.2.0
+
+  safe-ssr@0.0.8(@sveltejs/kit@2.15.2(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.16.6)(vite@6.0.7(@types/node@22.10.5)))(svelte@5.16.6)(vite@6.0.7(@types/node@22.10.5)))(svelte@5.16.6):
+    dependencies:
+      '@sveltejs/kit': 2.15.2(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.16.6)(vite@6.0.7(@types/node@22.10.5)))(svelte@5.16.6)(vite@6.0.7(@types/node@22.10.5))
+      devalue: 5.1.1
+      svelte: 5.16.6
 
   semver@7.6.3: {}
 

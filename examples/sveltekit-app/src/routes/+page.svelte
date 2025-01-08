@@ -1,2 +1,11 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+import { signin } from "@lumina-auth/core"
+
+async function signin_with_google() {
+    await signin("google", {
+        success_redirect: "/auth/callback",
+    })
+}
+</script>
+
+<button onclick={signin_with_google}>Sign in with Google</button>

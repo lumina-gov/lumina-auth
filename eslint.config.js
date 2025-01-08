@@ -19,9 +19,6 @@ export default [
         }
     },
     {
-        ignores: ["build/", ".svelte-kit/", ".vercel", "dist/", "css/", "src/lib/queries.ts"]
-    },
-    {
         plugins: {
             "@stylistic/ts": stylisticTs
         }

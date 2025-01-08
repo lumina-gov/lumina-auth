@@ -1,4 +1,5 @@
-import { Provider } from "@lumina-auth/core";
+import { OAuthProvider } from "@lumina-auth/core";
+import { AuthResult } from "@lumina-auth/core/dist/provider";
 
 export interface DiscordRequest {
     callback: string
@@ -12,23 +13,36 @@ export interface DiscordProfile {
     discord_username: string
 }
 
+export interface DiscordSigninOptions {
+    callback: string
+}
+
 declare global {
     namespace LuminaAuth {
-        interface ProviderProfileMap {
-            discord: {
-                discord_username: string
-            }
+        interface ProviderProfiles {
+            discord: DiscordProfile
+        }
+
+        interface ProviderSigninOptions {
+            discord: DiscordSigninOptions
         }
     }
 }
 
-export class DiscordProvider extends Provider<DiscordProfile, DiscordRequest, DiscordResponse> {
-    constructor() {
-        super()
+export function DiscordProvider(
+    options: {
+        client_id: string
+        client_secret: string
+        redirect_uri: string
     }
-
-    handle(request: DiscordRequest): Promise<DiscordResponse> {
-        throw new Error("Not implemented")
+): OAuthProvider<"discord"> {
+    return {
+        provider: "discord",
+        name: "Discord",
+        type: "oidc",
+        issuer: "https://discord.com",
+        handle({ url, request }): Promise<AuthResult> {
+            throw new Error("Not implemented")
+        }
     }
 }
-

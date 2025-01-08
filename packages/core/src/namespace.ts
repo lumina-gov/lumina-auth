@@ -2,19 +2,22 @@ import { Prettify } from "./ts_utils"
 
 declare global {
     namespace LuminaAuth {
-        interface Session {}
-        interface JWT {}
-        interface ProviderProfileMap {}
-        // interface CredentialsProfile {}
+        interface JWTSession {
+            [key: string]: unknown
+        }
+        interface ProviderProfiles { }
+        interface ProviderSigninOptions { }
+        interface CredentialsProfile { }
 
-        type ProfileName = keyof ProviderProfileMap
-        type NamedProfileMap = {
-            [Name in ProfileName]: Prettify<{
+        type ProviderName = keyof ProviderProfiles
+
+        type ProfilesWithProvider = {
+            [Name in ProviderName]: Prettify<{
                 provider: Name
-            } & ProviderProfileMap[Name]>
+            } & ProviderProfiles[Name]>
         }
 
-        type Profile = NamedProfileMap[ProfileName]
+        type Profile = ProfilesWithProvider[ProviderName]
     }
 }
 
