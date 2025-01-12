@@ -1,6 +1,6 @@
 import { AuthError } from "@lumina-auth/core"
-import { Provider } from "@lumina-auth/core/dist/provider"
-import type { AuthEventData, AuthResult, Awaitable } from "@lumina-auth/core"
+import { Provider } from "@lumina-auth/core"
+import type { AuthEventData, Awaitable } from "@lumina-auth/core"
 
 
 declare global {

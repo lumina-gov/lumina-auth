@@ -2,6 +2,7 @@ import stylisticTs from "@stylistic/eslint-plugin-ts"
 import { includeIgnoreFile } from "@eslint/compat"
 import ts from "typescript-eslint"
 import globals from "globals"
+import importPlugin from "eslint-plugin-import"
 import { fileURLToPath } from "node:url"
 
 const gitignorePath = fileURLToPath(new URL("./.gitignore", import.meta.url))
@@ -20,11 +21,23 @@ export default [
     },
     {
         plugins: {
-            "@stylistic/ts": stylisticTs
-        }
-    },
-    {
+            "@stylistic/ts": stylisticTs,
+            import: importPlugin
+        },
+        ignores: ["node_modules/**", "examples/**"],
         rules: {
+            "@typescript-eslint/no-empty-object-type": "off",
+            "@typescript-eslint/no-namespace": "off",
+            "import/extensions": [
+                "error",
+                "ignorePackages",
+                {
+                    js: "always",
+                    ts: "never",
+                    tsx: "never",
+                    dts: "never"
+                }
+            ],
             "@stylistic/ts/indent": ["error", 4, {
                 SwitchCase: 1,
             }],
@@ -49,7 +62,6 @@ export default [
                     caughtErrors: "none"
                 }
             ],
-            "@typescript-eslint/consistent-type-imports": ["error", { prefer: "type-imports" }],
             "@typescript-eslint/no-unused-expressions": "off",
             "@stylistic/ts/object-property-newline": ["error", {}],
             "@stylistic/ts/object-curly-newline": [

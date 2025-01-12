@@ -8,3 +8,11 @@
 1. Run `pnpm changeset` to create a new changeset
 2. Run `pnpm changeset version` to create a new version
 3. Run `pnpm changeset publish` to publish the new version
+
+All together:
+```bash
+pnpm build
+pnpm changeset
+pnpm changeset version
+pnpm changeset publish
+```

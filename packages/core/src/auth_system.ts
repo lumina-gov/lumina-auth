@@ -1,14 +1,16 @@
-import { JWTPayload, jwtVerify, JWTVerifyOptions, SignJWT } from "jose"
-import { Provider } from "./provider"
-import { Awaitable } from "./ts_utils"
-import { SIGNIN_PARAM, SIGNIN_PROVIDER_PARAM, SIGNOUT_PARAM } from "./client"
-import { catch_error } from "./error"
-import { Prettify } from "./ts_utils"
-
+import {
+    JWTPayload, jwtVerify, JWTVerifyOptions, SignJWT 
+} from "jose"
+import { Provider } from "./provider.js"
+import { Awaitable } from "./ts_utils.js"
+import { SIGNIN_PARAM, SIGNIN_PROVIDER_PARAM, SIGNOUT_PARAM } from "./client.js"
+import { catch_error } from "./error.js"
 
 export type AuthResult =
-    | { type: "redirect", redirect_uri: URL }
-    | { type: "profile", profile: LuminaAuth.Profile }
+    | { type: "redirect",
+        redirect_uri: URL }
+    | { type: "profile",
+        profile: LuminaAuth.Profile }
     | { type: "signout" }
 
 export type AuthEventData = {

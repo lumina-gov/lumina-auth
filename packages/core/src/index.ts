@@ -1,10 +1,10 @@
-import { Prettify } from "./ts_utils"
+import type { Prettify } from "./ts_utils"
 
-export * from "./provider"
-export * from "./client"
-export * from "./error"
-export * from "./auth_system"
-export * from "./ts_utils"
+export * from "./provider.js"
+export * from "./ts_utils.js"
+export * from "./client.js"
+export * from "./error.js"
+export * from "./auth_system.js"
 
 
 declare global {

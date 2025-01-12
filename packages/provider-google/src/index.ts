@@ -1,5 +1,5 @@
 import { AuthError } from "@lumina-auth/core"
-import { Provider } from "@lumina-auth/core/dist/provider"
+import { Provider } from "@lumina-auth/core"
 import type { AuthEventData, AuthResult } from "@lumina-auth/core"
 
 export interface GoogleProfile {
@@ -36,7 +36,9 @@ export function GoogleProvider(
     }
 ): Provider<"google"> {
 
-    async function build_auth_url({ auth_system, searchParams, build_url }: AuthEventData) {
+    async function build_auth_url({
+        auth_system, build_url 
+    }: AuthEventData) {
         const url = new URL("https://accounts.google.com/o/oauth2/v2/auth")
 
         const state_jwt = auth_system.create_jwt({
@@ -64,7 +66,7 @@ export function GoogleProvider(
 
 
     async function exchange_code_for_token(code: string, event: AuthEventData) {
-        const res = await fetch(`https://oauth2.googleapis.com/token`, {
+        const res = await fetch("https://oauth2.googleapis.com/token", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -96,7 +98,7 @@ export function GoogleProvider(
     }
 
     async function fetch_profile(token: string): Promise<LuminaAuth.ProfilesWithProvider["google"]> {
-        const res = await fetch(`https://www.googleapis.com/oauth2/v2/userinfo`, {
+        const res = await fetch("https://www.googleapis.com/oauth2/v2/userinfo", {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -111,7 +113,9 @@ export function GoogleProvider(
     }
 
     async function handle_callback(event: AuthEventData): Promise<AuthResult> {
-        const { request, searchParams, auth_system } = event
+        const {
+            request, searchParams, auth_system 
+        } = event
 
         if (request.method !== "GET") throw new AuthError("invalid_request", "Method not allowed", 405)
 
@@ -128,7 +132,10 @@ export function GoogleProvider(
 
         if (!auth_result.access_token) throw new AuthError("invalid_request", "No `access_token` found in request", 400)
 
-        return { type: "profile", profile: await fetch_profile(auth_result.access_token) }
+        return {
+            type: "profile",
+            profile: await fetch_profile(auth_result.access_token) 
+        }
     }
 
     return {

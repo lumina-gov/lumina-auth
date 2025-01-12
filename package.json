@@ -1,6 +1,7 @@
 {
     "name": "@lumina-auth/monorepo",
     "private": true,
+    "type": "module",
     "scripts": {
         "build": "pnpm run clean && pnpm -r build",
         "test": "pnpm -r test",
@@ -8,7 +9,12 @@
     },
     "devDependencies": {
         "@changesets/cli": "^2.27.11",
+        "@eslint/compat": "^1.2.4",
+        "@stylistic/eslint-plugin-ts": "^2.12.1",
         "@types/node": "^22.10.5",
-        "typescript": "^5.7.2"
+        "eslint-plugin-import": "^2.31.0",
+        "globals": "^15.14.0",
+        "typescript": "^5.7.2",
+        "typescript-eslint": "^8.19.1"
     }
 }
