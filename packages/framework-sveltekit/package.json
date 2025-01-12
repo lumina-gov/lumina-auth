@@ -1,7 +1,7 @@
 {
     "name": "@lumina-auth/framework-sveltekit",
     "private": false,
-    "version": "0.0.1",
+    "version": "0.0.0",
     "description": "SvelteKit authentication framework",
     "license": "MIT",
     "main": "dist/index.js",
@@ -19,5 +19,8 @@
     "devDependencies": {
         "@sveltejs/kit": "^2.0.0",
         "cookie": "^0.6.0"
+    },
+    "publishConfig": {
+        "access": "public"
     }
 }

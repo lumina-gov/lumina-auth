@@ -1,7 +1,7 @@
 {
     "name": "@lumina-auth/provider-credentials",
     "private": false,
-    "version": "0.0.1",
+    "version": "0.0.0",
     "description": "Credentials authentication Provider",
     "license": "MIT",
     "main": "dist/index.js",
@@ -15,5 +15,8 @@
     },
     "dependencies": {
         "@lumina-auth/core": "workspace:*"
+    },
+    "publishConfig": {
+        "access": "public"
     }
 }
