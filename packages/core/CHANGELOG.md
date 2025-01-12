@@ -1,5 +1,11 @@
 # @lumina-auth/core
 
+## 0.0.2
+
+### Patch Changes
+
+- 793b878: Update v
+
 ## 0.0.1
 
 ### Patch Changes

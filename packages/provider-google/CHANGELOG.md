@@ -1,5 +1,13 @@
 # @lumina-auth/provider-google
 
+## 0.0.2
+
+### Patch Changes
+
+- 793b878: Update v
+- Updated dependencies [793b878]
+  - @lumina-auth/core@0.0.2
+
 ## 0.0.1
 
 ### Patch Changes
