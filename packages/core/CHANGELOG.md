@@ -1,5 +1,11 @@
 # @lumina-auth/core
 
+## 0.0.9
+
+### Patch Changes
+
+- 0031e28: require .js extension
+
 ## 0.0.8
 
 ### Patch Changes
