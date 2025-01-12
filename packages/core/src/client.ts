@@ -1,5 +1,3 @@
-export * from "./namespace"
-
 export const SIGNIN_PARAM = "__auth_signin"
 export const SIGNOUT_PARAM = "__auth_signout"
 export const SIGNIN_PROVIDER_PARAM = "provider"

@@ -1,10 +1,10 @@
-export * from "./namespace"
-
 import { JWTPayload, jwtVerify, JWTVerifyOptions, SignJWT } from "jose"
 import { Provider } from "./provider"
 import { Awaitable } from "./ts_utils"
 import { SIGNIN_PARAM, SIGNIN_PROVIDER_PARAM, SIGNOUT_PARAM } from "./client"
 import { catch_error } from "./error"
+import { Prettify } from "./ts_utils"
+
 
 export type AuthResult =
     | { type: "redirect", redirect_uri: URL }

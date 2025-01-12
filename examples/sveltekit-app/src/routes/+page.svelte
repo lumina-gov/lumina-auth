@@ -1,5 +1,5 @@
 <script lang="ts">
-import { signin } from "@lumina-auth/core"
+import { signin, signout } from "@lumina-auth/core"
 
 async function signin_with_google() {
     await signin("google")
@@ -26,6 +26,8 @@ async function signin_with_credentials() {
 <button onclick={signin_with_credentials}>Sign in with Credentials</button>
 <hr>
 <p>Session: {JSON.stringify(data.session)}</p>
+<hr>
+<button onclick={signout}>Sign out</button>
 <style>
 hr {
     height: 1px;
