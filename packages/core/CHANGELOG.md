@@ -1,5 +1,11 @@
 # @lumina-auth/core
 
+## 0.0.10
+
+### Patch Changes
+
+- 994f64a: Return 204 after signout
+
 ## 0.0.9
 
 ### Patch Changes
