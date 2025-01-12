@@ -1,25 +1,26 @@
 {
-  "name": "@lumina-auth/core",
-  "private": false,
-  "version": "0.0.2",
-  "description": "Lumina authentication core",
-  "license": "MIT",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "tsc",
-    "clean": "rm -rf dist"
-  },
-  "dependencies": {
-    "jose": "^5.9.6"
-  },
-  "devDependencies": {
-    "cookie": "^1.0.2"
-  },
-  "publishConfig": {
-    "access": "public"
-  }
+    "name": "@lumina-auth/core",
+    "private": false,
+    "version": "0.0.3",
+    "description": "Lumina authentication core",
+    "license": "MIT",
+    "type": "module",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "clean": "rm -rf dist"
+    },
+    "dependencies": {
+        "jose": "^5.9.6"
+    },
+    "devDependencies": {
+        "cookie": "^1.0.2"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
 }

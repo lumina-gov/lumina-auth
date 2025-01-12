@@ -1,5 +1,11 @@
 # @lumina-auth/core
 
+## 0.0.3
+
+### Patch Changes
+
+- cafb421: Use type module
+
 ## 0.0.2
 
 ### Patch Changes

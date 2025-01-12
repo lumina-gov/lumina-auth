@@ -1,9 +1,10 @@
 {
     "name": "@lumina-auth/provider-credentials",
     "private": false,
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Credentials authentication Provider",
     "license": "MIT",
+    "type": "module",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "files": [

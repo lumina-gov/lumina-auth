@@ -1,5 +1,16 @@
 # sveltekit-example
 
+## 0.0.3
+
+### Patch Changes
+
+- cafb421: Use type module
+- Updated dependencies [cafb421]
+  - @lumina-auth/provider-credentials@0.0.3
+  - @lumina-auth/framework-sveltekit@0.0.3
+  - @lumina-auth/provider-google@0.0.3
+  - @lumina-auth/core@0.0.3
+
 ## 0.0.2
 
 ### Patch Changes
