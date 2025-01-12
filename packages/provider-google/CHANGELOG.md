@@ -1,5 +1,13 @@
 # @lumina-auth/provider-google
 
+## 0.0.7
+
+### Patch Changes
+
+- 9cdc9c5: Move global namespace into index
+- Updated dependencies [9cdc9c5]
+  - @lumina-auth/core@0.0.7
+
 ## 0.0.6
 
 ### Patch Changes
