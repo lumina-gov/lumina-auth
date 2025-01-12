@@ -21,6 +21,7 @@ class AuthSystem extends SvelteKitAuthSystem {
     }
 
     async profile_to_session(profile: LuminaAuth.Profile) {
+        console.log(profile)
         return {
             id: profile.id,
             email: profile.email,
