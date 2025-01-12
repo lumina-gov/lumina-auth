@@ -1,7 +1,7 @@
 {
   "name": "@lumina-auth/core",
   "private": false,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Lumina authentication core",
   "license": "MIT",
   "main": "dist/index.js",

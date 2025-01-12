@@ -1,5 +1,13 @@
 # @lumina-auth/provider-discord
 
+## 0.0.1
+
+### Patch Changes
+
+- 0b90ecf: Update v
+- Updated dependencies [0b90ecf]
+  - @lumina-auth/core@0.0.1
+
 ## 0.0.0
 
 ### Patch Changes

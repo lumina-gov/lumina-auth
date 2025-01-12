@@ -1,5 +1,16 @@
 # sveltekit-example
 
+## 0.0.1
+
+### Patch Changes
+
+- 0b90ecf: Update v
+- Updated dependencies [0b90ecf]
+  - @lumina-auth/core@0.0.1
+  - @lumina-auth/framework-sveltekit@0.0.1
+  - @lumina-auth/provider-credentials@0.0.1
+  - @lumina-auth/provider-google@0.0.1
+
 ## 0.0.0
 
 ### Patch Changes
