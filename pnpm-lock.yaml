@@ -82,12 +82,6 @@ importers:
       '@lumina-auth/core':
         specifier: workspace:*
         version: link:../core
-      '@lumina-auth/provider-discord':
-        specifier: workspace:*
-        version: link:../provider-discord
-      '@lumina-auth/provider-google':
-        specifier: workspace:*
-        version: link:../provider-google
     devDependencies:
       '@sveltejs/kit':
         specifier: ^2.0.0

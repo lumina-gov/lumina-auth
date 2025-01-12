@@ -14,9 +14,7 @@
         "clean": "rm -rf dist"
     },
     "dependencies": {
-        "@lumina-auth/core": "workspace:*",
-        "@lumina-auth/provider-google": "workspace:*",
-        "@lumina-auth/provider-discord": "workspace:*"
+        "@lumina-auth/core": "workspace:*"
     },
     "devDependencies": {
         "@sveltejs/kit": "^2.0.0",

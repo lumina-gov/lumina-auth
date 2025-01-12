@@ -5,7 +5,13 @@
         "build": "pnpm run clean && pnpm -r build",
         "test": "pnpm -r test",
         "clean": "pnpm -r clean",
-        "publish": "pnpm run build && pnpm -r publish --filter \"./packages/*\" --access public"
+        "version:patch": "pnpm -r --filter \"./packages/**\" version patch",
+        "version:minor": "pnpm -r --filter \"./packages/**\" version minor",
+        "version:major": "pnpm -r --filter \"./packages/**\" version major",
+        "publish": "pnpm run build && pnpm -r publish --filter \"./packages/*\" --access public",
+        "publish:patch": "pnpm run version:patch && pnpm run publish",
+        "publish:minor": "pnpm run version:minor && pnpm run publish",
+        "publish:major": "pnpm run version:major && pnpm run publish"
     },
     "devDependencies": {
         "@types/node": "^22.10.5",
