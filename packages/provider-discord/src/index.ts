@@ -1,5 +1,5 @@
 import { OAuthProvider } from "@lumina-auth/core";
-import { AuthResult } from "@lumina-auth/core/dist/provider";
+import type { AuthResult, AuthError } from "@lumina-auth/core";
 
 export interface DiscordRequest {
     callback: string
@@ -41,7 +41,7 @@ export function DiscordProvider(
         name: "Discord",
         type: "oidc",
         issuer: "https://discord.com",
-        handle({ url, request }): Promise<AuthResult> {
+        handle(event): Promise<AuthResult> {
             throw new Error("Not implemented")
         }
     }

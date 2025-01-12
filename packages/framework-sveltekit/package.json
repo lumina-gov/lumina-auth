@@ -1,7 +1,7 @@
 {
     "name": "@lumina-auth/framework-sveltekit",
     "private": false,
-    "version": "0.1.0",
+    "version": "0.0.1",
     "description": "SvelteKit authentication framework",
     "license": "MIT",
     "main": "dist/index.js",
@@ -16,10 +16,10 @@
     "dependencies": {
         "@lumina-auth/core": "workspace:*",
         "@lumina-auth/provider-google": "workspace:*",
-        "@lumina-auth/provider-discord": "workspace:*",
-        "safe-ssr": "0.0.8"
+        "@lumina-auth/provider-discord": "workspace:*"
     },
     "devDependencies": {
-        "@sveltejs/kit": "^2.0.0"
+        "@sveltejs/kit": "^2.0.0",
+        "cookie": "^0.6.0"
     }
 }

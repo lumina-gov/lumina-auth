@@ -15,7 +15,8 @@
 	"dependencies": {
 		"@lumina-auth/core": "workspace:*",
 		"@lumina-auth/framework-sveltekit": "workspace:*",
-		"@lumina-auth/provider-google": "workspace:*"
+		"@lumina-auth/provider-google": "workspace:*",
+		"@lumina-auth/provider-credentials": "workspace:*"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.2.4",

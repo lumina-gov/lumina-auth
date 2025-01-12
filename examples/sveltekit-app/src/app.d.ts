@@ -10,6 +10,25 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 	}
+
+	namespace LuminaAuth {
+		interface JWTSession {
+			id: string
+			email: string
+			name: string
+		}
+
+		interface CredentialsProfile {
+			id: string
+			email: string
+			name: string
+		}
+
+		interface CredentialsSigninOptions {
+			email: string
+			password: string
+		}
+	}
 }
 
 

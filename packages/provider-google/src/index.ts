@@ -1,5 +1,6 @@
-import { AuthError, BASE_PATH } from "@lumina-auth/core"
-import { AuthHandler, AuthResult, Provider } from "@lumina-auth/core/dist/provider"
+import { AuthError } from "@lumina-auth/core"
+import { Provider } from "@lumina-auth/core/dist/provider"
+import type { AuthEventData, AuthResult } from "@lumina-auth/core"
 
 export interface GoogleProfile {
     id: string
@@ -11,9 +12,9 @@ export interface GoogleProfile {
     picture: string
 }
 
-export interface GoogleSigninOptions {
-    scopes?: string[]
-}
+// export interface GoogleSigninOptions {
+//     scopes?: string[]
+// }
 
 declare global {
     namespace LuminaAuth {
@@ -22,7 +23,7 @@ declare global {
         }
 
         interface ProviderSigninOptions {
-            google: GoogleSigninOptions
+            // google?: GoogleSigninOptions
         }
     }
 }
@@ -34,31 +35,35 @@ export function GoogleProvider(
         scopes?: string[]
     }
 ): Provider<"google"> {
-    const paths = {
-        signin: `${BASE_PATH}google/signin`,
-        callback: `${BASE_PATH}google/callback`,
-    }
 
-    function build_auth_url(request_url: URL) {
-        const url = new URL("/o/oauth2/v2/auth", "https://accounts.google.com")
+    async function build_auth_url({ auth_system, searchParams, build_url }: AuthEventData) {
+        const url = new URL("https://accounts.google.com/o/oauth2/v2/auth")
+
+        const state_jwt = auth_system.create_jwt({
+            sub: crypto.randomUUID(),
+            type: "google_state",
+        }).setExpirationTime("15m")
+
+        const state = await auth_system.sign_jwt(state_jwt)
+
         const params = new URLSearchParams({
-            response_type: "code",
             client_id: options.client_id,
-            redirect_uri: new URL(paths.callback, request_url).toString(),
             scope: options.scopes ? options.scopes.join(" ") : "openid email profile",
-            prompt: "consent",
-            nonce: crypto.randomUUID(),
             include_granted_scopes: "true",
-            state: crypto.randomUUID(),
+            response_type: "code",
+            prompt: "consent",
+            redirect_uri: build_url("callback").toString(),
+            nonce: crypto.randomUUID(),
+            state,
         })
 
-        url.search = params.toString()
+        url.search = `?${params.toString()}`
 
-        return url.toString()
+        return url
     }
 
 
-    async function exchange_code_for_token(code: string, request_url: URL) {
+    async function exchange_code_for_token(code: string, event: AuthEventData) {
         const res = await fetch(`https://oauth2.googleapis.com/token`, {
             method: "POST",
             headers: {
@@ -67,7 +72,7 @@ export function GoogleProvider(
             body: new URLSearchParams({
                 client_id: options.client_id,
                 client_secret: options.client_secret,
-                redirect_uri: new URL(paths.callback, request_url).toString(),
+                redirect_uri: event.build_url("callback").toString(),
                 code,
                 grant_type: "authorization_code",
             }),
@@ -105,42 +110,37 @@ export function GoogleProvider(
         }
     }
 
+    async function handle_callback(event: AuthEventData): Promise<AuthResult> {
+        const { request, searchParams, auth_system } = event
 
-    const handlers: Record<string, AuthHandler> = {
-        signin: async ({ url }) => {
-            const redirect_uri = build_auth_url(url)
-            return { type: "redirect", redirect_uri }
-        },
-        callback: async ({ url, request }) => {
-            if (request.method !== "GET") throw new AuthError("invalid_request", "Method not allowed", 405)
-            /**
-             * @todo Validate state 
-             */
-            const state = url.searchParams.get("state")
-            if (!state) throw new AuthError("invalid_request", "No `state` found in request", 400)
+        if (request.method !== "GET") throw new AuthError("invalid_request", "Method not allowed", 405)
 
-            const code = url.searchParams.get("code")
-            if (!code) throw new AuthError("invalid_request", "No `code` found in request", 400)
+        // validate the state
+        const state = searchParams.get("state")
+        if (!state) throw new AuthError("oauth_error", "No `state` found in request", 400)
+        const state_payload = await auth_system.verify_payload(state)
+        if (state_payload.type !== "google_state") throw new AuthError("oauth_error", "Invalid `state` found in request", 400)
 
-            const auth_result = await exchange_code_for_token(code, url)
+        // exchange the code for a token
+        const code = searchParams.get("code")
+        if (!code) throw new AuthError("oauth_error", "No `code` found in request", 400)
+        const auth_result = await exchange_code_for_token(code, event)
 
-            if (!auth_result.access_token) throw new AuthError("invalid_request", "No `access_token` found in request", 400)
+        if (!auth_result.access_token) throw new AuthError("invalid_request", "No `access_token` found in request", 400)
 
-            return { type: "profile", profile: await fetch_profile(auth_result.access_token) }
-        },
+        return { type: "profile", profile: await fetch_profile(auth_result.access_token) }
     }
 
     return {
         provider: "google",
-        handle(event): Promise<AuthResult> {
-            let pathname = event.url.pathname
-            switch (pathname) {
-                case paths.signin:
-                    return handlers.signin(event)
-                case paths.callback:
-                    return handlers.callback(event)
-                default:
-                    throw new AuthError("unknown_url", "Unknown authentication path", 404)
+        async handle(event) {
+            switch (event.path) {
+                case "signin": return {
+                    type: "redirect",
+                    redirect_uri: await build_auth_url(event)
+                }
+                case "callback": return handle_callback(event)
+                default: throw new AuthError("unknown_url", "Unknown authentication path", 404)
             }
         },
     }

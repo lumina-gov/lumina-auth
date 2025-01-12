@@ -1,7 +1,7 @@
 
 import { sequence } from "@sveltejs/kit/hooks"
-import { handler } from "./auth"
+import { auth_system } from "./auth"
 
 export const handle = sequence(
-    handler
+    auth_system.handler,
 )

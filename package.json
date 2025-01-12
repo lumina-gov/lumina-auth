@@ -4,7 +4,8 @@
     "scripts": {
         "build": "pnpm run clean && pnpm -r build",
         "test": "pnpm -r test",
-        "clean": "pnpm -r clean"
+        "clean": "pnpm -r clean",
+        "publish": "pnpm run build && pnpm -r publish --filter \"./packages/*\" --access public"
     },
     "devDependencies": {
         "@types/node": "^22.10.5",

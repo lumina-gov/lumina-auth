@@ -23,6 +23,9 @@ importers:
       '@lumina-auth/framework-sveltekit':
         specifier: workspace:*
         version: link:../../packages/framework-sveltekit
+      '@lumina-auth/provider-credentials':
+        specifier: workspace:*
+        version: link:../../packages/provider-credentials
       '@lumina-auth/provider-google':
         specifier: workspace:*
         version: link:../../packages/provider-google
@@ -69,6 +72,10 @@ importers:
       jose:
         specifier: ^5.9.6
         version: 5.9.6
+    devDependencies:
+      cookie:
+        specifier: ^1.0.2
+        version: 1.0.2
 
   packages/framework-sveltekit:
     dependencies:
@@ -81,13 +88,19 @@ importers:
       '@lumina-auth/provider-google':
         specifier: workspace:*
         version: link:../provider-google
-      safe-ssr:
-        specifier: 0.0.8
-        version: 0.0.8(@sveltejs/kit@2.15.2(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.16.6)(vite@6.0.7(@types/node@22.10.5)))(svelte@5.16.6)(vite@6.0.7(@types/node@22.10.5)))(svelte@5.16.6)
     devDependencies:
       '@sveltejs/kit':
         specifier: ^2.0.0
         version: 2.15.2(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.16.6)(vite@6.0.7(@types/node@22.10.5)))(svelte@5.16.6)(vite@6.0.7(@types/node@22.10.5))
+      cookie:
+        specifier: ^0.6.0
+        version: 0.6.0
+
+  packages/provider-credentials:
+    dependencies:
+      '@lumina-auth/core':
+        specifier: workspace:*
+        version: link:../core
 
   packages/provider-discord:
     dependencies:
@@ -612,6 +625,10 @@ packages:
     resolution: {integrity: sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==}
     engines: {node: '>= 0.6'}
 
+  cookie@1.0.2:
+    resolution: {integrity: sha512-9Kr/j4O16ISv8zBBhJoi4bXOYNTkFLOqSL3UDB0njXxCXNezjeyVrJyGOWtgfs/q2km1gwBcfH8q1yEGoMYunA==}
+    engines: {node: '>=18'}
+
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
@@ -1009,12 +1026,6 @@ packages:
   sade@1.8.1:
     resolution: {integrity: sha512-xal3CZX1Xlo/k4ApwCFrHVACi9fBqJ7V+mwhBsuf/1IOKbBy098Fex+Wa/5QMubw09pSZ/u8EY8PWgevJsXp1A==}
     engines: {node: '>=6'}
-
-  safe-ssr@0.0.8:
-    resolution: {integrity: sha512-jLyeeNfROXrIbAkwdXlMp4Q/lY+BiL88vWF/T5TIKH31BfSKP/u2+QGoE9XgAfjhR0fvBi0zmvMlMC9XUJAd2Q==}
-    peerDependencies:
-      '@sveltejs/kit': ^2.5.24
-      svelte: ^5.0.0-next.1
 
   semver@7.6.3:
     resolution: {integrity: sha512-oVekP1cKtI+CTDvHWYFUcMtsK/00wmAEfyqKfNdARm8u1wNVhSgaX7A8d4UuIlUI5e84iEwOhs7ZPYRmzU9U6A==}
@@ -1604,6 +1615,8 @@ snapshots:
 
   cookie@0.6.0: {}
 
+  cookie@1.0.2: {}
+
   cross-spawn@7.0.6:
     dependencies:
       path-key: 3.1.1
@@ -2010,12 +2023,6 @@ snapshots:
   sade@1.8.1:
     dependencies:
       mri: 1.2.0
-
-  safe-ssr@0.0.8(@sveltejs/kit@2.15.2(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.16.6)(vite@6.0.7(@types/node@22.10.5)))(svelte@5.16.6)(vite@6.0.7(@types/node@22.10.5)))(svelte@5.16.6):
-    dependencies:
-      '@sveltejs/kit': 2.15.2(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.16.6)(vite@6.0.7(@types/node@22.10.5)))(svelte@5.16.6)(vite@6.0.7(@types/node@22.10.5))
-      devalue: 5.1.1
-      svelte: 5.16.6
 
   semver@7.6.3: {}
 

@@ -1,16 +1,4 @@
-
-
-export type AuthResult =
-    | { type: "redirect", redirect_uri: string }
-    | { type: "profile", profile: LuminaAuth.Profile }
-
-
-export type AuthEventData = {
-    url: URL
-    request: Request
-}
-
-export type AuthHandler = (event: AuthEventData) => Promise<AuthResult>
+import type { AuthHandler } from "./auth_system"
 
 export interface Provider<Name extends LuminaAuth.ProviderName> {
     provider: Name

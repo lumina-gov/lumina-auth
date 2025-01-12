@@ -7,7 +7,6 @@ declare global {
         }
         interface ProviderProfiles { }
         interface ProviderSigninOptions { }
-        interface CredentialsProfile { }
 
         type ProviderName = keyof ProviderProfiles
 

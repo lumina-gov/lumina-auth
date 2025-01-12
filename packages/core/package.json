@@ -1,19 +1,22 @@
 {
   "name": "@lumina-auth/core",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "Lumina authentication core",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-      "dist"
+    "dist"
   ],
   "scripts": {
-      "build": "tsc",
-      "clean": "rm -rf dist"
+    "build": "tsc",
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "jose": "^5.9.6"
+  },
+  "devDependencies": {
+    "cookie": "^1.0.2"
   }
 }
