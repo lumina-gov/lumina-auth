@@ -1,5 +1,13 @@
 # @lumina-auth/provider-credentials
 
+## 0.0.8
+
+### Patch Changes
+
+- 01466b5: use export types
+- Updated dependencies [01466b5]
+  - @lumina-auth/core@0.0.8
+
 ## 0.0.7
 
 ### Patch Changes

@@ -1,7 +1,7 @@
 {
     "name": "@lumina-auth/provider-google",
     "private": false,
-    "version": "0.0.7",
+    "version": "0.0.8",
     "description": "Google authentication Provider",
     "license": "MIT",
     "type": "module",
