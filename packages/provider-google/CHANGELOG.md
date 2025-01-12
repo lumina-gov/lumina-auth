@@ -1,5 +1,13 @@
 # @lumina-auth/provider-google
 
+## 0.0.4
+
+### Patch Changes
+
+- 68e16b9: Implemented signout functionality
+- Updated dependencies [68e16b9]
+  - @lumina-auth/core@0.0.4
+
 ## 0.0.3
 
 ### Patch Changes
