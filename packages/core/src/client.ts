@@ -1,8 +1,8 @@
 export * from "./namespace"
 
 export const SIGNIN_PARAM = "__auth_signin"
+export const SIGNOUT_PARAM = "__auth_signout"
 export const SIGNIN_PROVIDER_PARAM = "provider"
-
 // export interface BaseOptions {
 //     // /**
 //     //  * Base options for authentication providers
@@ -93,4 +93,13 @@ export async function signin<P extends LuminaAuth.ProviderName>(
     document.body.appendChild(form)
     form.submit()
     document.body.removeChild(form)
+}
+
+export async function signout() {
+    const url = new URL(window.location.href)
+    url.searchParams.set(SIGNOUT_PARAM, "true")
+
+    await fetch(url.toString(), {
+        method: "POST",
+    })
 }

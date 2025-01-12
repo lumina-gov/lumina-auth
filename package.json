@@ -4,14 +4,7 @@
     "scripts": {
         "build": "pnpm run clean && pnpm -r build",
         "test": "pnpm -r test",
-        "clean": "pnpm -r clean",
-        "version:patch": "changeset add --empty && changeset version patch",
-        "version:minor": "changeset add --empty && changeset version minor",
-        "version:major": "changeset add --empty && changeset version major",
-        "publish": "pnpm run build && changeset publish --access public --packages \"./packages/*\"",
-        "publish:patch": "pnpm run version:patch && pnpm run publish",
-        "publish:minor": "pnpm run version:minor && pnpm run publish",
-        "publish:major": "pnpm run version:major && pnpm run publish"
+        "clean": "pnpm -r clean"
     },
     "devDependencies": {
         "@changesets/cli": "^2.27.11",

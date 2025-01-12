@@ -51,6 +51,10 @@ export abstract class SvelteKitAuthSystem extends AuthSystem {
 
                     throw redirect(303, new URL(location, event.url).toString())
                 }
+                case "signout": {
+                    this.set_cookie(event, this.token_cookie_name, "")
+                    return resolve(event)
+                }
             }
         } catch (e) {
             if (e instanceof AuthError) return await this.on_auth_error(event, e)
@@ -72,8 +76,12 @@ export abstract class SvelteKitAuthSystem extends AuthSystem {
         return await this.verify_payload(token)
     }
 
-    protected set_cookie(event: RequestEvent, name: string, value: string): void {
-        event.cookies.set(name, value, this.cookie_options)
+    protected set_cookie(event: RequestEvent, name: string, value: string | null): void {
+        if (value) {
+            event.cookies.set(name, value, this.cookie_options)
+        } else {
+            event.cookies.delete(name, this.cookie_options)
+        }
     }
 
     protected async session_provider({ event, resolve }: SvelteKitHandlerParams): Promise<Response> {
