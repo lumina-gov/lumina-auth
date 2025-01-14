@@ -1,5 +1,11 @@
 # @lumina-auth/core
 
+## 0.0.11
+
+### Patch Changes
+
+- bf88257: Improved error handling
+
 ## 0.0.10
 
 ### Patch Changes

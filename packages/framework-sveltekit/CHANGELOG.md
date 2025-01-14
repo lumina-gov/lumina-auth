@@ -1,5 +1,13 @@
 # @lumina-auth/framework-sveltekit
 
+## 0.0.11
+
+### Patch Changes
+
+- bf88257: Improved error handling
+- Updated dependencies [bf88257]
+  - @lumina-auth/core@0.0.11
+
 ## 0.0.10
 
 ### Patch Changes
