@@ -1,5 +1,11 @@
 # @lumina-auth/core
 
+## 0.0.13
+
+### Patch Changes
+
+- b4be8aa: updated error handling again
+
 ## 0.0.12
 
 ### Patch Changes
