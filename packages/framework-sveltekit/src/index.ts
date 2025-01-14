@@ -2,6 +2,7 @@ import {
     redirect, RequestEvent, ResolveOptions 
 } from "@sveltejs/kit"
 import {
+    AuthResult,
     AuthSystem,
 } from "@lumina-auth/core"
 import { Awaitable } from "@lumina-auth/core"
@@ -39,19 +40,25 @@ export abstract class SvelteKitAuthSystem extends AuthSystem {
     }
 
     protected async handle({ event, resolve }: SvelteKitHandlerParams): Promise<Response> {
+        let auth_result: AuthResult | null
         try {
-            const auth_result = await this.auth_request(event.request)
+            auth_result = await this.auth_request(event.request)
+        } catch (e) {
+            throw await this.handle_error(e, event)
+        }
 
-            // We don't await since we don't wanna "catch" this error
-            if (!auth_result) return resolve(event)
+        // Let this event continue to the next handler
+        if (!auth_result) return await resolve(event)
 
+        try {
+            // otherwise, handle the auth result
             switch (auth_result.type) {
                 case "redirect": redirect(307, auth_result.redirect_uri.toString())
                 case "profile": await this.handle_profile(event, auth_result.profile)
                 case "signout": return await this.handle_signout(event)
             }
         } catch (e) {
-            throw this.handle_error(e, event)
+            throw await this.handle_error(e, event)
         }
     }
 
