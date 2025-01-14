@@ -2,9 +2,7 @@ import {
     redirect, RequestEvent, ResolveOptions 
 } from "@sveltejs/kit"
 import {
-    AuthError,
     AuthSystem,
-    convert_error,
 } from "@lumina-auth/core"
 import { Awaitable } from "@lumina-auth/core"
 import { sequence } from "@sveltejs/kit/hooks"
@@ -53,7 +51,7 @@ export abstract class SvelteKitAuthSystem extends AuthSystem {
                 case "signout": return await this.handle_signout(event)
             }
         } catch (e) {
-            throw await this.handle_error(convert_error(e), event)
+            throw this.handle_error(e, event)
         }
     }
 
@@ -72,7 +70,7 @@ export abstract class SvelteKitAuthSystem extends AuthSystem {
     }
 
 
-    protected handle_error(error: AuthError, _event: RequestEvent): Awaitable<never> {
+    protected handle_error(error: unknown, _event: RequestEvent): Awaitable<never> {
         throw error
     }
 

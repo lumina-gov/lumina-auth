@@ -16,8 +16,3 @@ export class AuthError extends Error {
     }
 }
 
-export function convert_error(e: unknown): AuthError {
-    if (e instanceof AuthError) return e
-    if (e instanceof Error) return new AuthError(e.name, e.message, 400, e)
-    throw e
-}
