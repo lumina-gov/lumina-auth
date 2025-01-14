@@ -1,5 +1,13 @@
 # @lumina-auth/provider-google
 
+## 0.0.14
+
+### Patch Changes
+
+- 92b8f76: ignore svelte redirect errors
+- Updated dependencies [92b8f76]
+  - @lumina-auth/core@0.0.14
+
 ## 0.0.13
 
 ### Patch Changes
