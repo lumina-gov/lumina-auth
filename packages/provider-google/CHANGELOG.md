@@ -1,5 +1,13 @@
 # @lumina-auth/provider-google
 
+## 0.0.12
+
+### Patch Changes
+
+- 5d369c2: improve error handling again
+- Updated dependencies [5d369c2]
+  - @lumina-auth/core@0.0.12
+
 ## 0.0.11
 
 ### Patch Changes
