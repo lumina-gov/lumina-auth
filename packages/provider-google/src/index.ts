@@ -130,7 +130,7 @@ export function GoogleProvider(
         if (!code) throw new AuthError("oauth_error", "No `code` found in request", 400)
         const auth_result = await exchange_code_for_token(code, event)
 
-        if (!auth_result.access_token) throw new AuthError("invalid_request", "No `access_token` found in request", 400)
+        if (!auth_result.access_token) throw new AuthError("oauth_error", "No `access_token` found in request", 400)
 
         return {
             type: "profile",

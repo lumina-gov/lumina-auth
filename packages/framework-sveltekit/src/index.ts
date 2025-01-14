@@ -1,7 +1,10 @@
-import { redirect, RequestEvent, ResolveOptions } from "@sveltejs/kit"
+import {
+    redirect, RequestEvent, ResolveOptions 
+} from "@sveltejs/kit"
 import {
     AuthError,
     AuthSystem,
+    convert_error,
 } from "@lumina-auth/core"
 import { Awaitable } from "@lumina-auth/core"
 import { sequence } from "@sveltejs/kit/hooks"
@@ -28,6 +31,8 @@ export abstract class SvelteKitAuthSystem extends AuthSystem {
         expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30),
     } as const
 
+    protected abstract handle_signin(event: RequestEvent, session: LuminaAuth.JWTSession): Awaitable<never>
+
     get handler() {
         return sequence(
             this.handle.bind(this),
@@ -39,32 +44,35 @@ export abstract class SvelteKitAuthSystem extends AuthSystem {
         try {
             const auth_result = await this.auth_request(event.request)
 
+            // We don't await since we don't wanna "catch" this error
             if (!auth_result) return resolve(event)
 
             switch (auth_result.type) {
-                case "redirect": return redirect(307, auth_result.redirect_uri.toString())
-                case "profile": {
-                    const session = await this.profile_to_session(auth_result.profile)
-                    const token = await this.session_to_token(session)
-                    const location = await this.get_success_callback(event, session)
-                    this.set_cookie(event, this.token_cookie_name, token)
-
-                    throw redirect(303, new URL(location, event.url).toString())
-                }
-                case "signout": {
-                    this.set_cookie(event, this.token_cookie_name, "")
-                    return new Response(null, { status: 204 })
-                }
+                case "redirect": redirect(307, auth_result.redirect_uri.toString())
+                case "profile": await this.handle_profile(event, auth_result.profile)
+                case "signout": return await this.handle_signout(event)
             }
         } catch (e) {
-            if (e instanceof AuthError) return await this.on_auth_error(event, e)
-            throw e
+            throw await this.handle_error(convert_error(e), event)
         }
     }
 
-    protected abstract get_success_callback(event: RequestEvent, session: LuminaAuth.JWTSession): Awaitable<string>
+    protected async handle_profile(event: RequestEvent, profile: LuminaAuth.Profile): Promise<never> {
+        const session = await this.profile_to_session(profile)
+        const token = await this.session_to_token(session)
 
-    protected on_auth_error(_event: RequestEvent, error: AuthError): Awaitable<Response> {
+        this.set_cookie(event, this.token_cookie_name, token)
+
+        throw await this.handle_signin(event, session)
+    }
+
+    protected async handle_signout(event: RequestEvent): Promise<Response> {
+        this.set_cookie(event, this.token_cookie_name, null)
+        return new Response(null, { status: 204 })
+    }
+
+
+    protected handle_error(error: AuthError, _event: RequestEvent): Awaitable<never> {
         throw error
     }
 
@@ -91,9 +99,8 @@ export abstract class SvelteKitAuthSystem extends AuthSystem {
             event.locals.session = await this.get_session(event)
         } catch (e) {
             // an error occured whilst verifying the token, it may be expired or
-            // otherwise invalid, so we can just ignore it and leave the session as null
+            // otherwise invalid, so we should just ignore it and leave the session as null
         }
-
         return resolve(event)
     }
 }

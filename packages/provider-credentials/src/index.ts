@@ -40,7 +40,7 @@ export function CredentialsProvider(
         const credentials = JSON.parse(data)
 
         const profile = await signin(credentials) as LuminaAuth.CredentialsProfile
-
+        
         return {
             ...profile,
             provider: "credentials",
