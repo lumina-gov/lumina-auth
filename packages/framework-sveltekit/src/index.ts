@@ -1,4 +1,5 @@
 import {
+    isRedirect,
     redirect, RequestEvent, ResolveOptions 
 } from "@sveltejs/kit"
 import {
@@ -58,6 +59,8 @@ export abstract class SvelteKitAuthSystem extends AuthSystem {
                 case "signout": return await this.handle_signout(event)
             }
         } catch (e) {
+            // Ignore svelte redirect errors
+            if (isRedirect(e)) throw e
             throw await this.handle_error(e, event)
         }
     }
