@@ -53,7 +53,7 @@ export abstract class SvelteKitAuthSystem extends AuthSystem {
                 }
                 case "signout": {
                     this.set_cookie(event, this.token_cookie_name, "")
-                    return resolve(event)
+                    return new Response(null, { status: 204 })
                 }
             }
         } catch (e) {

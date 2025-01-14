@@ -96,8 +96,5 @@ export async function signin<P extends LuminaAuth.ProviderName>(
 export async function signout() {
     const url = new URL(window.location.href)
     url.searchParams.set(SIGNOUT_PARAM, "true")
-
-    await fetch(url.toString(), {
-        method: "POST",
-    })
+    await fetch(url.toString())
 }
