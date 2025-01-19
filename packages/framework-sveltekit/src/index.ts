@@ -45,7 +45,12 @@ export abstract class SvelteKitAuthSystem extends AuthSystem {
         try {
             auth_result = await this.auth_request(event.request)
         } catch (e) {
-            throw await this.handle_error(e, event)
+            try {
+                throw await this.handle_error(e, event)
+            } catch (e) {
+                if (isRedirect(e)) throw e
+                throw e
+            }
         }
 
         // Let this event continue to the next handler
@@ -61,7 +66,12 @@ export abstract class SvelteKitAuthSystem extends AuthSystem {
         } catch (e) {
             // Ignore svelte redirect errors
             if (isRedirect(e)) throw e
-            throw await this.handle_error(e, event)
+            try {
+                throw await this.handle_error(e, event)
+            } catch (e) {
+                if (isRedirect(e)) throw e
+                throw e
+            }
         }
     }
 
