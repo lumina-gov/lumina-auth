@@ -1,5 +1,13 @@
 # @lumina-auth/provider-credentials
 
+## 0.0.17
+
+### Patch Changes
+
+- 2fd15d1: fix sign out
+- Updated dependencies [2fd15d1]
+  - @lumina-auth/core@0.0.17
+
 ## 0.0.16
 
 ### Patch Changes

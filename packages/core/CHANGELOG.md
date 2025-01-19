@@ -1,5 +1,11 @@
 # @lumina-auth/core
 
+## 0.0.17
+
+### Patch Changes
+
+- 2fd15d1: fix sign out
+
 ## 0.0.16
 
 ### Patch Changes
