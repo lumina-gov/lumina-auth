@@ -1,5 +1,13 @@
 # @lumina-auth/framework-sveltekit
 
+## 0.0.15
+
+### Patch Changes
+
+- 834c94a: fix auth error maybe
+- Updated dependencies [834c94a]
+  - @lumina-auth/core@0.0.15
+
 ## 0.0.14
 
 ### Patch Changes

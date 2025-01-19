@@ -1,5 +1,11 @@
 # @lumina-auth/core
 
+## 0.0.15
+
+### Patch Changes
+
+- 834c94a: fix auth error maybe
+
 ## 0.0.14
 
 ### Patch Changes
