@@ -1,5 +1,13 @@
 # @lumina-auth/provider-google
 
+## 0.0.16
+
+### Patch Changes
+
+- b22e062: fix erro
+- Updated dependencies [b22e062]
+  - @lumina-auth/core@0.0.16
+
 ## 0.0.15
 
 ### Patch Changes

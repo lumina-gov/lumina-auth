@@ -1,5 +1,11 @@
 # @lumina-auth/core
 
+## 0.0.16
+
+### Patch Changes
+
+- b22e062: fix erro
+
 ## 0.0.15
 
 ### Patch Changes

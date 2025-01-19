@@ -1,7 +1,7 @@
 {
     "name": "@lumina-auth/provider-discord",
     "private": false,
-    "version": "0.0.15",
+    "version": "0.0.16",
     "description": "Discord authentication Provider",
     "license": "MIT",
     "type": "module",
