@@ -1,5 +1,11 @@
 # @lumina-auth/core
 
+## 0.0.18
+
+### Patch Changes
+
+- 4057d62: get rid of pointless try catches
+
 ## 0.0.17
 
 ### Patch Changes
