@@ -1,7 +1,7 @@
 {
     "name": "@lumina-auth/framework-sveltekit",
     "private": false,
-    "version": "0.0.18",
+    "version": "0.0.19",
     "description": "SvelteKit authentication framework",
     "license": "MIT",
     "type": "module",
@@ -17,7 +17,7 @@
     "dependencies": {
         "@lumina-auth/core": "workspace:*"
     },
-    "devDependencies": {
+    "peerDependencies": {
         "@sveltejs/kit": "^2.0.0",
         "cookie": "^0.6.0"
     },

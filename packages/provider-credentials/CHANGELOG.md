@@ -1,5 +1,13 @@
 # @lumina-auth/provider-credentials
 
+## 0.0.19
+
+### Patch Changes
+
+- af9a825: use peer dep
+- Updated dependencies [af9a825]
+  - @lumina-auth/core@0.0.19
+
 ## 0.0.18
 
 ### Patch Changes
