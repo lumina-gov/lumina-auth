@@ -1,5 +1,13 @@
 # @lumina-auth/provider-credentials
 
+## 0.0.20
+
+### Patch Changes
+
+- da700de: use hotfix isRedirect
+- Updated dependencies [da700de]
+  - @lumina-auth/core@0.0.20
+
 ## 0.0.19
 
 ### Patch Changes
